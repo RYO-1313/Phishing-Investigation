@@ -36,11 +36,11 @@ Every case in this repo follows this triage process:
 
 ## 📂 Investigations
 
-| # | Case | Type | Verdict |
-|---|------|------|---------|
-| PHI-001 | [Brazilian Toll Road Scam — DETRAN Impersonation](PHI-001.md) | Credential Harvesting | ✅ True Positive |
-| PHI-002 | [Real Estate BEC — Reply-To Hijack](PHI-002.md) | Business Email Compromise | ✅ True Positive |
-| PHI-003 | [Spoofed Identity — Gibberish Domain Infrastructure](PHI-003.md) | Suspicious Link Delivery | ✅ True Positive |
+| # | Case | Sample | Verdict |
+|---|------|--------|---------|
+| PHI-001 | [Brazilian Toll Road Scam — DETRAN Impersonation](PHI-001.md) | [sample-8550](https://github.com/rf-peixoto/phishing_pot/blob/main/email/sample-8550.eml) | ✅ True Positive |
+| PHI-002 | [Real Estate BEC — Reply-To Hijack](PHI-002.md) | [sample-8610](https://github.com/rf-peixoto/phishing_pot/blob/main/email/sample-8610.eml) | ✅ True Positive |
+| PHI-003 | [Spoofed Identity — Gibberish Domain Infrastructure](PHI-003.md) | [sample-8612](https://github.com/rf-peixoto/phishing_pot/blob/main/email/sample-8612.eml) | ✅ True Positive |
 
 > More investigations are actively in progress and will be added to this repo.
 
