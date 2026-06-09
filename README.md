@@ -28,7 +28,7 @@ Every case in this repo follows this triage process:
 |------|--------|------|
 | 1 | Extract and parse email headers | MXToolbox |
 | 2 | Check sender IP reputation and geolocation | AbuseIPDB |
-| 3 | Verify domain registration age and ownership | DomainTools WHOIS |
+| 3 | Verify domain registration age and ownership | WHOIS.com |
 | 4 | Analyze URLs, domains, and attachments | VirusTotal |
 | 5 | Document red flags, MITRE mapping, and escalation decision | — |
 
