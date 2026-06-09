@@ -1,0 +1,168 @@
+# 🎣 PHI-001 — Brazilian Toll Road Phishing (DETRAN Impersonation)
+
+> **Path:** Phishing-Investigations / PHI-001
+
+---
+
+## 🧠 What This Investigation Is About
+
+A suspicious email landed in the queue impersonating **DETRAN** — Brazil's national vehicle and traffic authority — warning the recipient of an unpaid toll charge and threatening fines, license point deductions, and vehicle restrictions. The language was urgent and authoritative, designed to panic the recipient into clicking a payment link without thinking.
+
+This investigation walks through a full header analysis, sender reputation checks, URL detonation, and social engineering breakdown — confirming the email as a phishing attempt crafted to harvest payment credentials from Portuguese-speaking victims.
+
+**Verdict: True Positive — Escalated to L2 SOC**
+
+---
+
+## 🖥️ Investigation Environment
+
+**Tools Used:**
+
+| Tool | Purpose |
+|------|---------|
+| [MXToolbox](https://mxtoolbox.com/) | Email header extraction and authentication checks |
+| [AbuseIPDB](https://www.abuseipdb.com/) | Sender IP reputation and geolocation |
+| [DomainTools WHOIS](https://whois.domaintools.com/) | Domain registration lookup |
+| [VirusTotal](https://www.virustotal.com/) | URL and IP reputation across 70+ security engines |
+
+---
+
+## 🎯 SOC Relevance
+
+Government impersonation phishing — tax authorities, traffic departments, customs agencies — is one of the most effective social engineering vectors because victims believe the threat is real and the consequences are immediate. The combination of **urgency**, **financial penalty**, and **authority** is a textbook manipulation formula designed to bypass rational thinking.
+
+From a SOC perspective, this case is a strong example of how technical red flags (no authentication, no valid TLD, IP/language mismatch) and behavioral red flags (pressure language, spoofed authority) always appear together in well-crafted phishing. An analyst who can read both layers simultaneously will triage faster and more accurately than one who only checks headers.
+
+---
+
+## 📧 Email Profile
+
+| Field | Value |
+|-------|-------|
+| Sender Display | DETRAN (Brazilian traffic authority impersonation) |
+| From Address | `debitos@616305pedagiodigital` |
+| Return-Path | `debitos@616305pedagiodigital` |
+| Sender IP | `162.243.92.6` |
+| Attached URL | `https://www.office.com-pedagio353263943@digital-359350980864.southamerica-east1.run.app/` |
+| Email Language | Portuguese |
+
+---
+
+## 🔍 Investigation Walkthrough
+
+### Step 1 — Header Extraction (MXToolbox)
+
+Pulled the full email header through MXToolbox to extract the originating IP, authentication results, and routing path.
+
+**Authentication results:**
+
+| Check | Result |
+|-------|--------|
+| SPF | ❌ None |
+| DKIM | ❌ None |
+| DMARC | ❌ None |
+
+> A legitimate government or institutional sender will always have SPF, DKIM, and DMARC configured. The complete absence of all three authentication records means there is no way to verify this email came from who it claims. Any email failing all three checks should be treated as suspicious immediately.
+
+📸 `[SCREENSHOT — MXToolbox header analysis showing failed authentication checks]`
+
+---
+
+### Step 2 — Sender IP Analysis (AbuseIPDB)
+
+Looked up the originating IP `162.243.92.6` to identify its origin and reputation.
+
+**Findings:**
+- **Location:** United States of America
+- **ISP:** DigitalOcean, LLC
+- **Abuse reports:** None on record
+
+📸 `[SCREENSHOT — AbuseIPDB result for 162.243.92.6]`
+
+> The IP being unrated on AbuseIPDB does not make it clean — it means the attacker is using a fresh or rotated infrastructure specifically to avoid reputation-based blocking. More critically, the IP originates from a **US-based DigitalOcean server** while the email is written entirely in **Portuguese** and impersonates a **Brazilian government agency**. That geographic and linguistic mismatch is a strong indicator of spoofed origin.
+
+📸 `[SCREENSHOT — VirusTotal result for 162.243.92.6 showing unrated status]`
+
+---
+
+### Step 3 — Domain Analysis (WHOIS + VirusTotal)
+
+Investigated the sender domain `616305pedagiodigital`.
+
+**Critical finding:** The domain has **no Top-Level Domain (TLD)**. A legitimate domain must end in `.com`, `.gov`, `.br`, or similar. `616305pedagiodigital` is not a valid domain — it cannot be registered, verified, or traced. This is a deliberate obfuscation technique to prevent domain reputation lookups from flagging the sender.
+
+📸 `[SCREENSHOT — WHOIS lookup showing no valid domain registration]`
+
+---
+
+### Step 4 — URL Analysis (VirusTotal)
+
+Submitted the attached payment URL to VirusTotal for multi-engine analysis.
+
+**Result: 11 security engines flagged the URL as phishing.**
+
+📸 `[SCREENSHOT — VirusTotal URL scan showing 11 phishing detections]`
+
+> The URL is structured to appear legitimate at a glance — it includes `office.com` at the beginning, which is designed to fool a recipient who reads quickly. The actual destination is a Google Cloud Run application (`southamerica-east1.run.app`) — a cloud hosting service being abused to serve the phishing page. This is a common evasion technique: hosting malicious content on trusted cloud infrastructure to bypass URL reputation filters.
+
+---
+
+### Step 5 — Social Engineering Analysis
+
+Beyond the technical indicators, this email weaponizes three psychological pressure mechanisms that are hallmarks of social engineering:
+
+| Technique | Example from Email | Effect on Victim |
+|-----------|-------------------|-----------------|
+| **Urgency** | *"URGENT NOTICE"*, *"CHECK YOUR LICENSE PLATE NOW"* | Forces a snap decision without time to think |
+| **Authority** | Impersonates DETRAN — a real, official government body | Makes the threat feel legitimate and unavoidable |
+| **Penalty/Fear** | *"resulting in a fine, points on your driver's license, and restrictions on the vehicle"*, *"Unpaid debts are automatically forwarded to the DETRAN"* | Creates fear of real-world consequences to override caution |
+
+> This combination — urgency + authority + penalty — is the most effective phishing formula in existence. It works across cultures and languages because it exploits how people respond to perceived institutional power and financial threat. Recognizing this pattern in email body content, independent of technical analysis, is a critical analyst skill.
+
+---
+
+## 🚩 Red Flags Summary
+
+| # | Red Flag | Severity |
+|---|----------|----------|
+| 1 | No SPF, DKIM, or DMARC | 🔴 High |
+| 2 | Sender domain has no valid TLD | 🔴 High |
+| 3 | URL flagged by 11 VT engines as phishing | 🔴 High |
+| 4 | US-based IP sending Portuguese-language email impersonating Brazilian government | 🔴 High |
+| 5 | URL disguised with `office.com` prefix to appear legitimate | 🟠 Medium |
+| 6 | Hosted on cloud infrastructure (`run.app`) to evade URL filters | 🟠 Medium |
+| 7 | Urgency, authority, and penalty language throughout | 🟠 Medium |
+
+---
+
+## 🧩 MITRE ATT&CK Mapping
+
+| Field | Value |
+|-------|-------|
+| Tactic | Initial Access |
+| Technique | T1566.002 — Phishing: Spearphishing Link |
+| Sub-technique | T1036 — Masquerading (domain and URL spoofing) |
+| Social Engineering | T1585 — Establish Accounts (impersonation of authority) |
+
+---
+
+## ✅ Verdict & Escalation
+
+| Field | Value |
+|-------|-------|
+| Classification | **True Positive** |
+| Confidence | High |
+| Action Taken | Escalated to L2 SOC |
+| Rationale | Multiple high-severity technical indicators combined with confirmed phishing detections on VT and deliberate social engineering language. No legitimate explanation for any of the observed signals. |
+
+---
+
+## 📋 Key Takeaways
+
+- **IP/language mismatch is an underrated signal.** A US cloud server sending Portuguese-language government impersonation email is geographically impossible for a legitimate sender. Cross-referencing sender IP origin against the claimed sender identity is a fast, high-value triage check.
+- **An unrated IP is not a clean IP.** Attackers actively rotate infrastructure to stay below reputation thresholds. AbuseIPDB and VirusTotal showing no history on a suspicious IP means the analyst needs to rely harder on the other indicators — not relax.
+- **Social engineering analysis belongs in incident reports.** Technical red flags tell you *how* the attack was built. Social engineering analysis tells you *who* it was built for and *why* it works. Both layers together make for a complete, actionable escalation report.
+
+---
+
+*by [ryo](https://github.com/RYO-1313)*
