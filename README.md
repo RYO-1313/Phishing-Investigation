@@ -48,7 +48,7 @@ Every case in this repo follows this triage process:
 
 ## 🛠️ Tools & Technologies
 
-`MXToolbox` · `VirusTotal` · `AbuseIPDB` · `DomainTools WHOIS` · `MITRE ATT&CK`
+`MXToolbox` · `VirusTotal` · `AbuseIPDB` · `WHOIS` · `MITRE ATT&CK`
 
 ---
 
