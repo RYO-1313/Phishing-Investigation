@@ -1,4 +1,4 @@
-# Phishing Case — Spoofed Identity: Gibberish Domain Infrastructure (PHI-003)
+# Phishing Case — Spoofed Identity: Gibberish Domain Infrastructure
 
 A phishing email sent from randomly-generated gibberish domains, routed through a trusted
 Microsoft cloud IP to dodge reputation-based blocking, with an attached link flagged malicious
