@@ -1,4 +1,4 @@
-# Analysis — Spoofed Identity: Gibberish Domain Infrastructure (PHI-003)
+# Analysis — Spoofed Identity: Gibberish Domain Infrastructure
 
 ## What happened
 A suspicious email came in from a sender address built from a random alphanumeric string —
