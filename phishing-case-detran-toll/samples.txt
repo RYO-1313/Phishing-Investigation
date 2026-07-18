@@ -1,0 +1,18 @@
+=== Raw Sample ===
+Case: Brazilian Toll Road Phishing (DETRAN Impersonation)
+Collected: 2026-06-09
+
+--- Email Headers / Sender Info ---
+Sender Display: DETRAN (Brazilian traffic authority impersonation)
+From Address: debitos@616305pedagiodigital
+Return-Path: debitos@616305pedagiodigital
+Sender IP: 162.243.92.6
+Email Language: Portuguese
+
+--- Body / URLs / Attachments ---
+Attached URL: https://www.office.com-pedagio353263943@digital-359350980864.southamerica-east1.run.app/
+
+Body themes (as described): urgent notice about an unpaid toll, warnings of fines, license
+point deductions, and vehicle restrictions if not paid. Includes lines such as "URGENT NOTICE",
+"CHECK YOUR LICENSE PLATE NOW", and language stating unpaid debts are automatically forwarded
+to DETRAN.
