@@ -1,61 +1,21 @@
-# 🎣 Phishing Investigations
+# Phishing Case — Spoofed Identity: Gibberish Domain Infrastructure (PHI-003)
 
-![Investigations](https://img.shields.io/badge/Investigations-3-red?style=for-the-badge&logo=mail&logoColor=white)
-![Tools](https://img.shields.io/badge/Tools-MXToolbox%20%7C%20VT%20%7C%20AbuseIPDB-blue?style=for-the-badge)
-![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT%26CK-Mapped-red?style=for-the-badge&logo=target&logoColor=white)
-![Focus](https://img.shields.io/badge/Focus-SOC%20%7C%20Email%20Analysis-darkblue?style=for-the-badge&logo=shield&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
+A phishing email sent from randomly-generated gibberish domains, routed through a trusted
+Microsoft cloud IP to dodge reputation-based blocking, with an attached link flagged malicious
+by threat intel.
 
-A hands-on phishing analysis lab where I investigate real-world phishing email samples end-to-end — extracting headers, profiling sender infrastructure, analyzing attached URLs, and delivering a triage verdict with escalation recommendation.
+**Verdict:** True Positive — Escalated to L2 SOC
 
-Every email investigated in this repository is sourced from [**Phishing Pot**](https://github.com/rf-peixoto/phishing_pot/tree/main) — an open collection of real phishing samples captured via honeypots, maintained for researchers and detection developers.
+## Files
 
----
+* `samples.txt` — raw sample
+* `analysis.md` — investigation and findings
+* `iocs.md` — indicators of compromise
+* `screenshots/` — evidence
 
-## 🎯 What This Lab Demonstrates
-
-Each investigation follows the same workflow a SOC analyst applies when a suspicious email hits the queue: header analysis, sender IP and domain reputation checks, URL detonation, authentication verification, and a final verdict with documented rationale.
-
-The goal is not just to find the red flags — it's to build a complete, reproducible picture of how the attack was constructed and why it should be escalated.
-
----
-
-## 🔬 Investigation Methodology
-
-Every case in this repo follows this triage process:
-
-| Step | Action | Tool |
-|------|--------|------|
-| 1 | Extract and parse email headers | MXToolbox |
-| 2 | Check sender IP reputation and geolocation | AbuseIPDB |
-| 3 | Verify domain registration age and ownership | WHOIS.com |
-| 4 | Analyze URLs, domains, and attachments | VirusTotal |
-| 5 | Document red flags, MITRE mapping, and escalation decision | — |
-
----
-
-## 📂 Investigations
-
-| # | Case | Sample | Verdict |
-|---|------|--------|---------|
-| PHI-001 | [Brazilian Toll Road Scam — DETRAN Impersonation](PHI-001.md) | [sample-8550](https://github.com/rf-peixoto/phishing_pot/blob/main/email/sample-8550.eml) | ✅ True Positive |
-| PHI-002 | [Real Estate BEC — Reply-To Hijack](PHI-002.md) | [sample-8610](https://github.com/rf-peixoto/phishing_pot/blob/main/email/sample-8610.eml) | ✅ True Positive |
-| PHI-003 | [Spoofed Identity — Gibberish Domain Infrastructure](PHI-003.md) | [sample-8612](https://github.com/rf-peixoto/phishing_pot/blob/main/email/sample-8612.eml) | ✅ True Positive |
-
-> More investigations are actively in progress and will be added to this repo.
-
----
-
-## 🛠️ Tools & Technologies
-
-`MXToolbox` · `VirusTotal` · `AbuseIPDB` · `WHOIS` · `MITRE ATT&CK`
-
----
-
-## 📌 Sample Source
-
-All email samples are sourced from [**rf-peixoto/phishing_pot**](https://github.com/rf-peixoto/phishing_pot/tree/main) — a public honeypot-based collection of real phishing emails maintained for security researchers and detection developers.
-
----
-
-*by [ryo](https://github.com/RYO-1313)*
+## Email Overview
+Sender used a from-address and sender-address built from random alphanumeric strings
+(`8DDW299YD3LSARPE5KWZZCHBHC2B.com`, `A8XINU8B9JL9H1.com`), sent from a Microsoft cloud IP
+(`51.104.208.151`), with no SPF/DKIM/DMARC. Reply-To pointed to `getdrip.com` and Complaint-To
+routed through an unrelated Italian server (`we16.morona.it`). The attached link,
+`kyempapu.org`, was flagged Phishing by 2 VirusTotal engines and Suspicious/Spam by 3 more.
