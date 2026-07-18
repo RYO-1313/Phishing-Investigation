@@ -1,5 +1,4 @@
-# IOCs — Spoofed Identity: Gibberish Domain Infrastructure (PHI-003)
-
+# IOCs — Spoofed Identity: Gibberish Domain Infrastructure
 | Type | Value | Notes |
 |------|-------|-------|
 | IP | 51.104.208.151 | Sender IP, ISP: Microsoft Limited, unrated on VT, no AbuseIPDB reports |
