@@ -1,0 +1,12 @@
+=== Raw Sample ===
+Case: Spoofed Identity — Gibberish Domain Infrastructure (PHI-003)
+
+--- Email Headers / Profile ---
+From Address:     SIDVGL1M@8DDW299YD3LSARPE5KWZZCHBHC2B.com
+Sender Address:   6983baaef125cc1528f7e2f6-466@A8XINU8B9JL9H1.com
+Reply-To:         getdrip.com
+Complaint-To:     we16.morona.it
+Sender IP:        51.104.208.151
+
+--- Body / URLs / Attachments ---
+Attached Link:    https://kyempapu.org
