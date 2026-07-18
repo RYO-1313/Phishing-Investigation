@@ -9,6 +9,8 @@ sender reputation checks, and URL detonation confirmed it as a phishing attempt 
 Portuguese-speaking victims to harvest payment credentials.
 
 ## Header analysis
+<img width="1916" height="922" alt="MXToolbox" src="https://github.com/user-attachments/assets/9f3113e6-3094-4c54-a033-d0c567efc385" />
+
 Pulled the full header through MXToolbox to get the originating IP, authentication results,
 and routing path.
 
@@ -26,6 +28,9 @@ from who it claims. Any email failing all three should be treated as suspicious 
 
 ## Sender / IP reputation
 Looked up the originating IP 162.243.92.6 in AbuseIPDB.
+<img width="1916" height="922" alt="abuseIPDB" src="https://github.com/user-attachments/assets/31f7dec7-5b87-4157-8409-94deba833ad3" />
+
+<img width="1916" height="922" alt="VT-attachment-scan" src="https://github.com/user-attachments/assets/8d60079f-4944-4e3f-a97d-c7a9cc17c30a" />
 
 Findings:
 - Location: United States
@@ -45,6 +50,8 @@ traced, which looks like a deliberate move to block domain reputation lookups.
 ## URL / attachment behavior
 Submitted the attached payment URL to VirusTotal for multi-engine analysis. 11 security engines
 flagged it as phishing.
+
+<img width="1916" height="922" alt="VT-attachment-scan" src="https://github.com/user-attachments/assets/8d60079f-4944-4e3f-a97d-c7a9cc17c30a" />
 
 The URL is built to look legitimate at a glance — it opens with "office.com" to fool a
 recipient reading quickly. The actual destination is a Google Cloud Run application
