@@ -10,4 +10,8 @@ as phishing.
 - [`samples.txt`](./samples.txt) — raw sample
 - [`analysis.md`](./analysis.md) — investigation and findings
 - [`iocs.md`](./iocs.md) — indicators of compromise
-- `screenshots/` — evidence (added manually)
+- [`screenshots/`](./screenshots) — evidence
+
+Email source:
+
+## Email Overview
