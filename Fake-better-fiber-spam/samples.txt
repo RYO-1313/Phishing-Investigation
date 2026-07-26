@@ -1,0 +1,17 @@
+=== Raw Sample ===
+Case: Fake ISP fiber advertisement
+Collected: 2026/07/26
+
+--- Email Headers ---
+From: SNLCTC48@F15OHZNAWS03XM546WOITWUPXS0D.com
+Reply-To: areply-[nu_24]@in2.getdrip.com
+Subject: Votre adresse est éligible : -300€/an sur la fibre ? 🌐
+Delivered to: phishing@pot
+Sender IP: 108.143.19.9
+
+No SPF/DKIM/DMARC. Received chain checked, no spoofing signs. Sender IP claimed to be ISP, but the domain is random letters.
+
+--- Body / URLs / Attachments ---
+Attachments/Links: yes, tracker HTML link
+Redirect chain: final landing page
+URL: https://kyempapu.org/track/?act=op&pid=1330_rd&uid=20&cmpid=0&ofid=4865&lid=466&cid=6983baaef125cc1528f7e2f6
