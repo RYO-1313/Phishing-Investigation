@@ -11,6 +11,4 @@ An email posing as an ISP offering cheaper fiber pricing turned out to be phishi
 * `iocs.md` — indicators of compromise
 * `screenshots/` — evidence
 
-## Email Overview
-
-Claimed to be from an ISP provider advertising -300€/year off fiber pricing. Sent from a random-letter domain with no SPF/DKIM/DMARC, hosted on Microsoft cloud infrastructure. Contained one tracker link, no redirecting or credential-harvesting links.
+Email source: [sample-8609.eml](https://github.com/rf-peixoto/phishing_pot/blob/main/email/sample-8609.eml)
