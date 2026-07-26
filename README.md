@@ -20,4 +20,4 @@ Browse into any case folder to see the full write-up.
 
 ## Cases
 
-- `[TODO: add case folders as they're created]`
+- [DETRAN Toll Phishing](./phishing-case-detran-toll) — fake toll payment SMS/email impersonating DETRAN
