@@ -11,7 +11,6 @@ An email impersonating Chronopost claims a blocked parcel and a small customs fe
 * `iocs.md` — indicators of compromise
 * `screenshots/` — evidence
 * `raw-notes.md` — my raw notes (its a template i fill with informations about the email while investigating)
+* 
+**Email source:** [sample-8600.eml](https://github.com/rf-peixoto/phishing_pot/blob/main/email/sample-8600.eml)
 
-## Email Overview
-
-Spoofs Chronopost with a "Global Tracking System / Logistics Express" delivery notice, claiming an incorrect address or an unpaid €0.99 customs fee with a 14-hour hold. SPF/DKIM/DMARC all fail, and Microsoft's own filter scored it at max spam confidence (SCL 9/9). No attachments, three tracked links (open, click, unsubscribe) tied to a templated spam kit.
