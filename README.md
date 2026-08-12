@@ -22,4 +22,4 @@ Browse into any case folder to see the full write-up.
 
 - [DETRAN Toll Phishing](./phishing-case-detran-toll) — fake toll payment SMS/email impersonating DETRAN
 - [Fake Fiber advertisement](./Fake-better-fiber-spam) — fake ISP advertisement  spam/recon
-- [Fake Delivery Notification](./Fake-Delivery-Notification) — fake Delivery Notification impersonating 
+- [Fake Delivery Notification](./Fake-Delivery-Notification) — fake Delivery Notification impersonating Chronopost
