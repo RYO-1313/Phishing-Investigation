@@ -10,6 +10,7 @@ An email impersonating Chronopost claims a blocked parcel and a small customs fe
 * `analysis.md` — investigation and findings
 * `iocs.md` — indicators of compromise
 * `screenshots/` — evidence
+* `raw-notes.md` — my raw notes (its a template i fill with informations about the email while investigating)
 
 ## Email Overview
 
