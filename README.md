@@ -1,25 +1,15 @@
-# Phishing Investigations
+# Phishing Case — Fake Product Report Email (The Lions Spray)
 
-This repo is where I document phishing emails I investigate — the raw sample, what I checked, what I found, and how I closed each case out.
+A German-language email from "The Lions Spray Verbraucherreport" with a single clickable image, sent through Gmail from an onmicrosoft.com address. Authentication fails, and the link is flagged by 11 VirusTotal vendors.
 
-## Structure
+**Verdict:** True Positive — Severity 4
 
-Each investigation gets its own folder, named after the case:
+## Files
 
-```
-phishing-case-<slug>/
-├── README.md       # quick summary and verdict
-├── samples.txt     # raw sample: headers, body, URLs, attachments
-├── analysis.md     # what I checked and found
-├── iocs.md         # indicators of compromise
-├── raw-notes.txt   # my raw notes from the investigation
-└── screenshots/    # evidence
-```
+* `samples.txt` — raw sample
+* `analysis.md` — investigation and findings
+* `iocs.md` — indicators of compromise
+* `screenshots/` — evidence
+* `raw-notes.md` — my raw notes (a template I fill in with details about the email while investigating)
 
-Browse into any case folder to see the full write-up.
-
-## Cases
-
-- [DETRAN Toll Phishing](./phishing-case-detran-toll) — fake toll payment SMS/email impersonating DETRAN
-- [Fake Fiber advertisement](./Fake-better-fiber-spam) — fake ISP advertisement  spam/recon
-- [Fake Delivery Notification](./Fake-Delivery-Notification) — fake Delivery Notification impersonating Chronopost
+**Email source:** `sample-10897.eml`
