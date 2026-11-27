@@ -1,0 +1,32 @@
+
+phishing@pot malbox recived an email from houssaine-8fb71.firebaseapp.com , claiming "You have received €1,000 and 100 free spins — no deposit required" , with suspiciuse "Don't miss this opportunity — it is reserved for a limited number of members." which is a known social enginering tactic.
+
+
+
+
+
+looking at Delivery Information , the email pased SPF Alignment , SPF Authenticated and DKIM Alignment. but fails on DMARC Complian and DKIM Authenticated
+
+
+looking at where it from and the return path , both point at houssaine-8fb71.firebaseapp.com with sender IP 209.85.219.69
+
+
+SCL and X-Microsoft-Antispam arent sure about email with 5 rating on SCL and 0 on BCL
+
+searching firebaseapp.com on VirusTotal , all vendors flagged it as clean , but looking at community comments , most comennting its Phishing subdomains with one explaining why no vendore flag it "Not easy to outright block firebaseapp.com because legitimate services uses it like Virustotal GitHub SSO."
+
+i searched houssaine-8fb71.firebaseapp.com next and same no vendore flagged it , but this time because no vendore reated it
+
+the ip 209.85.219.69 tell a diffrent story , in VirusTotal one vendore flag it as suspiciuse , but in AbuseDB the community flagged The  IP as Email spam
+
+finally i looked into the link with the email . http://black01.click/t/4tlXwI6766MlAqY68bgQf0NLq0fJbn0Lwtk10
+in VirusTotalthe link flagged as phishing by 10 vendors and two malicous and malware .  url scan got HTTP 400
+DNS Error - Could not resolve domain .
+
+
+verdict : it is a phishing but with no downloadable attachments or credintial harvesting .
+
+
+ true positive , severity , low
+
+ actions : block the ip , escalate to l2 and inform the SOC and IT team
